@@ -2,6 +2,8 @@ package com.aluracursos.Literalura.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table( name = "book")
 
@@ -29,6 +31,9 @@ public class Book {
         this.summaries = data.summaries().isEmpty() ? "" : data.summaries().get(0);
         this.downloadCount = data.downloadCount();
         this.author = author;
+    }
+
+    public Book(List<BookData> bookData, Author author) {
     }
 
     public Long getId() {
@@ -83,7 +88,7 @@ public class Book {
     public String toString() {
         return "\n------ LIBRO ------" +
                 "\nTitulo: " + title +
-                "\nAutor: " + author +
+                "\nAutor: " + author.getName() +
                 "\nIdioma: " + language +
                 "\nDescargas: " + downloadCount +
                 "\n------------------";
